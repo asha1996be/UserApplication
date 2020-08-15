@@ -1,0 +1,68 @@
+<mat-card class="m-20">
+  <div fxLayout="row wrap" fxLayoutGap="20px grid" class="row-responsive">
+    <div fxFlex.gt-xs="50" fxFlex="100" class="col-responsive">
+      <mat-card>
+        <apx-chart [series]="piOptions.series" [chart]="piOptions.chart" [labels]="piOptions.labels" [colors]="piOptions.colors" [responsive]="piOptions.responsive" [title]="piOptions.title" [dataLabels]="piOptions.dataLabels"></apx-chart>
+      </mat-card>
+    </div>
+    <div fxFlex.gt-xs="50" fxFlex="100" class="row-responsive">
+      <div fxLayout="column wrap" fxLayoutGap="20px grid">
+        <div fxFlex.gt-xs="50" fxFlex="100" class="col-responsive">
+          <mat-card fxLayoutAlign="center center">
+            <span class="text-size">{{userPercentage}}%</span>
+            <img src="assets/images/Arrow.jpg" height="40" width="40">
+          </mat-card>
+        </div>
+        <div fxFlex.gt-xs="50" fxFlex="100" class="col-responsive">
+          <mat-card>
+            <div class="user-container">
+              <div class="user-icon"><img src="assets/images/User.jpg" height="150" width="150" class="user-icon"></div>
+              <mat-list>
+                <mat-list-item>Name : </mat-list-item>
+                <mat-list-item>Username : </mat-list-item>
+                <mat-list-item>Email : </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-card class="mt-20" [hidden]="!userList.length">
+    <mat-table class="lessons-table mat-elevation-z8" [dataSource]="userList" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>UserName</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.address.city}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="pincode">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pincode</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.address.zipcode}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.company.name}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: getDisplayedColumns()"></mat-row>
+    </mat-table>
+    <mat-paginator [hidden]="!userList.length" [pageSizeOptions]="[5, 12, 22]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+  <mat-card *ngIf="noUserData" class="message">
+    <span>No User Data!!!</span>
+  </mat-card>
+  <mat-card *ngIf="errMessage" class="message">
+    <span>Please Try Again..!!!</span>
+  </mat-card>
+</mat-card>

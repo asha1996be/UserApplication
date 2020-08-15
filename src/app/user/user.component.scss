@@ -1,0 +1,51 @@
+.row-responsive {
+  min-height: 260px;
+  height: auto;
+
+  .col-responsive {
+    mat-card {
+      min-height: 90%;
+      height: auto;
+    }
+  }
+}
+
+.bottom-space {
+  display: block;
+  margin-bottom: 88px;
+}
+
+.mat-card {
+  box-shadow: 1px 1px 1px 1px #CCC;
+  border-radius: 0;
+  border:1px solid black;
+  background:#EFEFEF;
+}
+
+.message {
+  margin-top: 10px;
+  padding: 40px;
+  font-size: 20px;
+  color: #CCC;
+  text-align: center;
+}
+.mat-table{
+  background: #EFEFEF;
+}
+.mat-paginator{
+  box-shadow: 1px 1px 1px 1px #CCC; 
+  background: #EFEFEF;
+}
+.m-20{
+  margin: 20px;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.user-icon{
+  float: left;
+}
+.text-size{
+  font-size: 3em;
+  padding: 20px;
+}
